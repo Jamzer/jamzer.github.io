@@ -28,7 +28,7 @@ var enemies = [];
 var spawnAmount = 7;
 
 var imgSprite = new Image();
-imgSprite.src = 'Sprite.png';
+imgSprite.src = 'https://jamzer.github.io/Sprite.png';
 imgSprite.addEventListener('load',init,false);
 
 var bgDrawX = 0;
