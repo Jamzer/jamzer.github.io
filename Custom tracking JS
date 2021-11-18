@@ -1,0 +1,388 @@
+//Shopify conversion puchase code
+<!-- Event snippet for purchase conversion page -->
+{% if first_time_accessed %}
+<script>
+gtag('event', 'conversion', {
+ 'send_to': 'AW-XXXXXXXX/XXXXXXXXXXXXX',
+'value': {{ checkout.total_price | money_without_currency | replace: ',', '.'}},
+'currency': '{{ currency }}',
+'transaction_id': '{{ order_number }}'
+});
+</script>
+{% endif %}
+
+
+//LightSpeed purchase code
+<!-- Global site tag (gtag.js) - Google Ads: 930953299 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-930953299"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'AW-930953299');
+</script>
+
+
+<!-- Event snippet for besteld conversion page -->
+<script>
+  gtag('event', 'conversion', {
+      'send_to': 'AW-930953299/WFxRCLm3sWMQ0_D0uwM',
+      'value': {{order.information.price_incl}},
+      'currency': 'EUR',
+      'transaction_id': {{ order.information.number }}
+  });
+</script>
+
+
+<!-- Event snippet for Conversion conversion page -->
+<script>
+  gtag('event', 'conversion', {'send_to': 'AW-930953299/WFxRCLm3sWMQ0_D0uwM'});
+</script>
+
+//lightspeed Dynamic Remarketting
+<!------------NEW Adwords Dynamic Remarketing Lightspeed------>
+
+{% set totalPrice = 0 %} 
+
+{% if template == 'pages/product.rain' %} 
+{% set totalPrice = product.price.price %} 
+{% elseif template == 'pages/cart.rain' %} 
+{% set totalPrice = page.cart.total.price %} 
+{% elseif template == 'pages/thankyou.rain' %} 
+{% set totalPrice = order.information.price_incl %} 
+{% endif %} 
+
+<script type="text/javascript"> 
+{% if product.id %} 
+var ecomm_prodid = '{{ product.id }}'; 
+{% endif %} 
+{% if totalPrice > 0 %} 
+var ecomm_totalvalue = {{ totalPrice }};
+{% endif %}  
+</script> 
+ <!-- Global site tag (gtag.js) - Google Ads: 993345986-->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-993345986"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'AW-XXXXXXXX');
+</script>
+<script>
+  gtag('event', 'page_view', {
+    'send_to': 'AW-XXXXXXXXX',
+    'value': ecomm_totalvalue,
+    'items': [{
+      'id': ecomm_prodid,
+      'google_business_vertical': 'retail'
+    }]
+  });
+</script>
+
+<!-- Global site tag (gtag.js) - Google Ads: XXXXXXXX -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-XXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'AW-XXXXXXXX');
+</script>
+
+<script>
+  gtag('event', 'page_view', {
+    'send_to': 'AW-XXXXXXXX',
+    'value': ecomm_totalvalue,
+    'items': [{
+      'id': ecomm_prodid,
+      'google_business_vertical': 'retail'
+    }]
+  });
+</script>
+
+
+
+//WPCF7 Contact form 7
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-148583528-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-148583528-1');
+
+document.addEventListener( 'wpcf7mailsent', function( event ) {
+  gtag('event', 'conversion', {'send_to': 'AW-328688023/4PODCM3Gv-ECEJfD3ZwB'});
+});
+</script>
+
+<script>
+document.addEventListener( 'wpcf7mailsent', function( event ) {
+gtag('event', 'submit', {
+  'event_category': 'Contactformulier'
+  });
+});
+</script>
+
+ga('send', 'event', 'Contactformulier', 'Verstuurd');
+
+<script>
+  document.addEventListener( 'wpcf7mailsent', function( event ) {
+    ga('send', 'event', 'Contactformulier', 'Verstuurd');
+  });
+</script>
+
+
+//WPCF7 Contact form 7 Multi ID
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-148583528-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-148583528-1');
+
+  document.addEventListener( 'wpcf7mailsent', function( event ) {
+
+  if(event.detail.contactFormId == 168){
+  gtag('event', 'submit', {
+    'event_category': 'Contactformulier'
+    });
+  }
+  else if(event.detail.contactFormId == 291){
+  gtag('event', 'submit', {
+    'event_category': 'Online Video'
+    });
+  }
+  else if(event.detail.contactFormId == 296){
+  gtag('event', 'submit', {
+    'event_category': 'offerte warmtepomp'
+    });
+  }
+});
+</script>
+
+
+
+//WPCF7 Contact form 7 Ads conversoin
+
+<!-- Global site tag (gtag.js) - Google Ads: 942356430 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-942356430"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'AW-942356430');
+
+  document.addEventListener( 'wpcf7mailsent', function( event ) {
+
+  
+
+});
+</script>
+
+
+
+
+// Ninja Forms
+
+<!--Ninja Forms-->
+<script>
+  jQuery( document ).ready( function() {
+      //Setup our on formSumbit Listener. 
+      jQuery( document ).on( 'nfFormSubmitResponse', function() {
+          //Do Stuff
+          gtag('event', 'Verstuurd', {
+          'event_category': 'Afspraakformulier'
+          });
+       });
+  });
+</script>
+
+<script>
+  jQuery( document ).ready( function() {
+    jQuery( document )
+    .on('click', '#nf-field-26', function() {
+    ga('send', 'event', 'Email List', 'Subscribed', 'New Subscriber');
+    });
+  });
+</script>
+
+ // Gravity Forms
+<!-- GFORM tracking-->
+<script>
+  jQuery(document).ready( function() {
+    jQuery(document).bind('gform_confirmation_loaded', function(event, formId){
+      gtag('event', 'Verstuurd', {
+        'event_category': 'Contactformulier'
+      });
+    });
+  });
+</script>
+
+<!-- GFORM tracking GTM-->
+<script>
+  jQuery(document).ready( function() {
+    jQuery(document).bind('gform_confirmation_loaded', function(event, formId){
+      window.dataLayer.push({
+        'event' : 'gravityFormSubmission',
+        'gfformID' : formId		
+      });
+    });
+  });
+</script>
+
+<!--This code wil run when HTML has loaded-->
+<script>
+  $(document).ready(function() {
+    gtag('event', 'Verstuurd', {
+    'event_category': 'Aanvraagformulier'
+    });
+  });  
+</script>
+  
+<script>
+  jQuery(function(){
+      jQuery("#startformular").on("click", function(){
+      console.log(test)
+    });
+  }); 
+</script>
+
+window.dataLayer.push({
+  'event': 'stap 2'
+  });
+
+onclick= gtag('event', 'Klik', {
+  'event_category': 'DEGIRO'
+});
+
+onclick= ga('send', 'event', 'Test','Test');
+  
+
+<script>
+  jQuery(function(){
+      jQuery(".startformular").on("click", function(){
+        window.dataLayer.push({
+          'event': 'banner click';
+        });
+      });
+  }); 
+</script>
+
+
+<script>
+  document.addEventListener( 'wpcf7mailsent', function( event ) {
+    window.dataLayer.push({
+      'event' : 'WPCF7Sent',	
+    });
+  });
+</script>
+
+
+
+
+
+
+<a href="https://www.bestbrokers.nl/degiro-broker" target="_blank" class="elementor-button-link elementor-button elementor-size-lg" role="button">
+  <span class="elementor-button-content-wrapper">
+  <span class="elementor-button-icon elementor-align-icon-right">
+  <i aria-hidden="true" class="fas fa-angle-double-right"></i> </span>
+  <span class="elementor-button-text">Bezoek de website</span>
+  </span>
+  </a>
+
+
+
+
+
+
+
+
+<!--Consent mode-->
+<!--Default-->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(datalayer.push(arguments));
+  gtag('consent', 'default', {
+    'ad_storage': {{consent mode - Ad_storage - value}},
+    'analytics' : {{consent mode - analytics_storage - value}}
+  });
+  datalayer.push({
+    'event' : 'default_consent'
+  });
+
+</script>
+<!--Update-->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(datalayer.push(arguments));
+  gtag('consent', 'update', {
+    'ad_storage': {{consent mode - Ad_storage - value}},
+    'analytics' : {{consent mode - analytics_storage - value}}
+  });
+</script>
+
+
+<!-- Cookie update for offline conversion tracking-->
+<script>
+  function getParam(p) {
+    var match = RegExp('[?&]' + p + '=([^&]*)').exec(window.location.search);
+    return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
+  }
+  function getExpiryRecord(value) {
+    var expiryPeriod = 90 * 24 * 60 * 60 * 1000; // 90 day expiry in milliseconds
+    var expiryDate = new Date().getTime() + expiryPeriod;
+    return {
+      value: value,
+      expiryDate: expiryDate
+    };
+  }
+  function addGclid() {
+    var gclidParam = getParam('gclid');
+    var gclidFormFields = ['gclid_field', 'foobar']; // all possible gclid form field ids here
+    var gclidRecord = null;
+    var currGclidFormField;
+    var gclsrcParam = getParam('gclsrc');
+    var isGclsrcValid = !gclsrcParam || gclsrcParam.indexOf('aw') !== -1;
+    gclidFormFields.forEach(function (field) {
+      if (document.getElementById(field)) {
+        currGclidFormField = document.getElementById(field);
+      }
+    });
+    if (gclidParam && isGclsrcValid) {
+      gclidRecord = getExpiryRecord(gclidParam);
+      localStorage.setItem('gclid', JSON.stringify(gclidRecord));
+    }
+    var gclid = gclidRecord || JSON.parse(localStorage.getItem('gclid'));
+    var isGclidValid = gclid && new Date().getTime() < gclid.expiryDate;
+    if (currGclidFormField && isGclidValid) {
+      currGclidFormField.value = gclid.value;
+    }
+  }
+  window.addEventListener('load', addGclid);
+</script>
+  
+
+<!--Adding product ids-->
+<script>
+ function() {
+    var products = {{Datalayer - ecommerce checkout products}};
+    var productIds = [];	
+  
+    for (var i = 0; i < products.length; i++) {
+        productIds.push(products[i]['id']);
+      }
+  
+    return productIds;
+  }
+</script>
+
+onclick
