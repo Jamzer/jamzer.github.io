@@ -1,0 +1,344 @@
+{
+    "exportFormatVersion": 2,
+    "exportTime": "2021-10-20 09:11:14",
+    "containerVersion": {
+        "path": "accounts/6004975646/containers/52467965/versions/0",
+        "accountId": "6004975646",
+        "containerId": "52467965",
+        "containerVersionId": "0",
+        "container": {
+            "path": "accounts/6004975646/containers/52467965",
+            "accountId": "6004975646",
+            "containerId": "52467965",
+            "name": "consent cookiebot",
+            "publicId": "GTM-MXLQDC3",
+            "usageContext": [
+                "WEB"
+            ],
+            "fingerprint": "1633351844366",
+            "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/6004975646/containers/52467965/workspaces?apiLink=container"
+        },
+        "tag": [
+            {
+                "accountId": "6004975646",
+                "containerId": "52467965",
+                "tagId": "4",
+                "name": "Ads consent update",
+                "type": "html",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "html",
+                        "value": "<script>\n    var adsconsent = document.getElementById('AdsCookieID');\n  \n  if (adsconsent.checked){\n    localStorage.setItem(\"ad_storage\", 'granted');\n    \n  }\n  \n    else {\n    \n     localStorage.setItem(\"ad_storage\", 'denied');\n  }\n  \n</script>"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "supportDocumentWrite",
+                        "value": "false"
+                    }
+                ],
+                "fingerprint": "1633351945533",
+                "firingTriggerId": [
+                    "3"
+                ],
+                "tagFiringOption": "ONCE_PER_EVENT",
+                "monitoringMetadata": {
+                    "type": "MAP"
+                },
+                "consentSettings": {
+                    "consentStatus": "NOT_SET"
+                }
+            },
+            {
+                "accountId": "6004975646",
+                "containerId": "52467965",
+                "tagId": "6",
+                "name": "Accept all cookies",
+                "type": "html",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "html",
+                        "value": "<script>\nlocalStorage.setItem(\"analytics_storage\", 'granted');\nlocalStorage.setItem(\"ad_storage\", 'granted');\n\nlocation.reload();\n  \n\n</script>"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "supportDocumentWrite",
+                        "value": "false"
+                    }
+                ],
+                "fingerprint": "1633351945533",
+                "firingTriggerId": [
+                    "5"
+                ],
+                "tagFiringOption": "ONCE_PER_EVENT",
+                "monitoringMetadata": {
+                    "type": "MAP"
+                },
+                "consentSettings": {
+                    "consentStatus": "NOT_SET"
+                }
+            },
+            {
+                "accountId": "6004975646",
+                "containerId": "52467965",
+                "tagId": "9",
+                "name": "Consent Mode",
+                "type": "html",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "html",
+                        "value": "<script>\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n\n  gtag('js', new Date());\n  gtag('set', 'url_passthrough', true);\n  gtag('set', 'ads_data_redaction', false); \n\n\n gtag('consent', 'default',{\n      'ad_storage':{{ad_storage}},\n      'analytics_storage':{{analytics_storage}},\n      'functionality_storage':{{analytics_storage}},\n      'personalization_storage': {{ad_storage}},\n      'security_storage':'granted', \n      'wait_for_update': 500\n  });\n  \n  gtag('consent', 'update', {\n      'ad_storage':{{ad_storage}},\n      'analytics_storage':{{analytics_storage}},\n      'functionality_storage':{{analytics_storage}},\n      'personalization_storage': {{ad_storage}},\n      'security_storage':'granted'\n});\n  \n  \n</script>"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "supportDocumentWrite",
+                        "value": "false"
+                    }
+                ],
+                "fingerprint": "1633351945534",
+                "firingTriggerId": [
+                    "2147479572"
+                ],
+                "tagFiringOption": "ONCE_PER_EVENT",
+                "monitoringMetadata": {
+                    "type": "MAP"
+                },
+                "consentSettings": {
+                    "consentStatus": "NOT_SET"
+                }
+            },
+            {
+                "accountId": "6004975646",
+                "containerId": "52467965",
+                "tagId": "11",
+                "name": "Conversion Linker",
+                "type": "gclidw",
+                "parameter": [
+                    {
+                        "type": "BOOLEAN",
+                        "key": "enableCrossDomain",
+                        "value": "false"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "enableUrlPassthrough",
+                        "value": "true"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "enableCookieOverrides",
+                        "value": "false"
+                    }
+                ],
+                "fingerprint": "1633351945532",
+                "firingTriggerId": [
+                    "10"
+                ],
+                "tagFiringOption": "ONCE_PER_EVENT",
+                "monitoringMetadata": {
+                    "type": "MAP"
+                },
+                "consentSettings": {
+                    "consentStatus": "NOT_SET"
+                }
+            },
+            {
+                "accountId": "6004975646",
+                "containerId": "52467965",
+                "tagId": "13",
+                "name": "Analytics consent update",
+                "type": "html",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "html",
+                        "value": "<script>  \nvar analyticsconsent = document.getElementById('AnalyticsCookieID');\n  \n  if (analyticsconsent.checked){\n    localStorage.setItem(\"analytics_storage\", 'granted');\n  }  \n    else {\n    \n   localStorage.setItem(\"analytics_storage\", 'denied');\n  }\n    \n\n</script>"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "supportDocumentWrite",
+                        "value": "false"
+                    }
+                ],
+                "fingerprint": "1633351945535",
+                "firingTriggerId": [
+                    "12"
+                ],
+                "tagFiringOption": "ONCE_PER_EVENT",
+                "monitoringMetadata": {
+                    "type": "MAP"
+                },
+                "consentSettings": {
+                    "consentStatus": "NOT_SET"
+                }
+            }
+        ],
+        "trigger": [
+            {
+                "accountId": "6004975646",
+                "containerId": "52467965",
+                "triggerId": "3",
+                "name": "Ads Consent",
+                "type": "CLICK",
+                "filter": [
+                    {
+                        "type": "EQUALS",
+                        "parameter": [
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg0",
+                                "value": "{{Click ID}}"
+                            },
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg1",
+                                "value": "AdsCookieID"
+                            }
+                        ]
+                    }
+                ],
+                "fingerprint": "1633351945530"
+            },
+            {
+                "accountId": "6004975646",
+                "containerId": "52467965",
+                "triggerId": "5",
+                "name": "Ok cookies",
+                "type": "CLICK",
+                "filter": [
+                    {
+                        "type": "EQUALS",
+                        "parameter": [
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg0",
+                                "value": "{{Click ID}}"
+                            },
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg1",
+                                "value": "CookieAccept"
+                            }
+                        ]
+                    }
+                ],
+                "fingerprint": "1633351945531"
+            },
+            {
+                "accountId": "6004975646",
+                "containerId": "52467965",
+                "triggerId": "10",
+                "name": "DOM Ready trigger",
+                "type": "DOM_READY",
+                "fingerprint": "1633351945532"
+            },
+            {
+                "accountId": "6004975646",
+                "containerId": "52467965",
+                "triggerId": "12",
+                "name": "Analytics consent",
+                "type": "CLICK",
+                "filter": [
+                    {
+                        "type": "EQUALS",
+                        "parameter": [
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg0",
+                                "value": "{{Click ID}}"
+                            },
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg1",
+                                "value": "AnalyticsCookieID"
+                            }
+                        ]
+                    }
+                ],
+                "fingerprint": "1633351945533"
+            }
+        ],
+        "variable": [
+            {
+                "accountId": "6004975646",
+                "containerId": "52467965",
+                "variableId": "7",
+                "name": "ad_storage",
+                "type": "jsm",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "javascript",
+                        "value": "function(){\nvar opti_ads = localStorage.getItem('ad_storage');\n\nif (opti_ads ===\"granted\"){\n  return 'granted';\n}\nelse if( opti_ads === \"denied\"){\n    return 'denied';\n    \n  }\n  else {\n\nlocalStorage.setItem(\"ad_storage\", 'denied');\n    return 'denied';\n  }\n}"
+                    }
+                ],
+                "fingerprint": "1633351945534",
+                "formatValue": {}
+            },
+            {
+                "accountId": "6004975646",
+                "containerId": "52467965",
+                "variableId": "8",
+                "name": "analytics_storage",
+                "type": "jsm",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "javascript",
+                        "value": "function(){\nvar opti_analytics = localStorage.getItem('analytics_storage');\n\nif (opti_analytics ===\"granted\"){\n  return 'granted';\n}\nelse if( opti_analytics === \"denied\"){\n    return 'denied';\n    \n  }\n  else {\n\nlocalStorage.setItem(\"analytics_storage\", 'denied');\n    return 'denied';\n  }\n}"
+                    }
+                ],
+                "fingerprint": "1633351945534",
+                "formatValue": {}
+            }
+        ],
+        "builtInVariable": [
+            {
+                "accountId": "6004975646",
+                "containerId": "52467965",
+                "type": "PAGE_URL",
+                "name": "Page URL"
+            },
+            {
+                "accountId": "6004975646",
+                "containerId": "52467965",
+                "type": "PAGE_HOSTNAME",
+                "name": "Page Hostname"
+            },
+            {
+                "accountId": "6004975646",
+                "containerId": "52467965",
+                "type": "PAGE_PATH",
+                "name": "Page Path"
+            },
+            {
+                "accountId": "6004975646",
+                "containerId": "52467965",
+                "type": "REFERRER",
+                "name": "Referrer"
+            },
+            {
+                "accountId": "6004975646",
+                "containerId": "52467965",
+                "type": "EVENT",
+                "name": "Event"
+            },
+            {
+                "accountId": "6004975646",
+                "containerId": "52467965",
+                "type": "CLICK_CLASSES",
+                "name": "Click Classes"
+            },
+            {
+                "accountId": "6004975646",
+                "containerId": "52467965",
+                "type": "CLICK_ID",
+                "name": "Click ID"
+            }
+        ],
+        "fingerprint": "1634721074733",
+        "tagManagerUrl": "https://tagmanager.google.com/#/versions/accounts/6004975646/containers/52467965/versions/0?apiLink=version"
+    }
+}
