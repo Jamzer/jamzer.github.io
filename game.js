@@ -80,9 +80,32 @@ function playGame() {
 }
 
 function spawnEnemy(number) {
-	for (var i = 0; i < number; i++) {
-		enemies[enemies.length] = new Enemy();
-	}
+    for (var i = 0; i < number; i++) {
+        var newEnemy = new Enemy();
+        // Check for collision with existing enemies
+        var collision = false;
+        for (var j = 0; j < enemies.length; j++) {
+            if (checkCollision(newEnemy, enemies[j])) {
+                collision = true;
+                break;
+            }
+        }
+        // If collision detected, adjust position
+        if (collision) {
+            newEnemy.drawX += newEnemy.width + 20; // Adjust position as needed
+        }
+        enemies.push(newEnemy);
+    }
+}
+
+// Function to check collision between two enemies
+function checkCollision(enemy1, enemy2) {
+    return (
+        enemy1.drawX < enemy2.drawX + enemy2.width &&
+        enemy1.drawX + enemy1.width > enemy2.drawX &&
+        enemy1.drawY < enemy2.drawY + enemy2.height &&
+        enemy1.drawY + enemy1.height > enemy2.drawY
+    );
 }
 
 function drawAllEnemies() {
