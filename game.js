@@ -164,13 +164,19 @@ function Jet() {
     this.health = 100;
 }
 
-Jet.prototype.draw = function() {
+Jet.prototype.draw = function () {
     clearCtxJet();
     this.updateCoors();
     this.checkDirections();
+    //places the bullets at the nose of the jet
     this.checkShooting();
     this.drawAllBullets();
     ctxJet.drawImage(imgSprite, this.srcX, this.srcY, this.width, this.height, this.drawX, this.drawY, this.width, this.height);
+    
+    // Display health percentage text
+    ctxJet.fillStyle = "white";
+    ctxJet.font = "bold 12px Arial";
+    ctxJet.fillText("Health: " + this.health + "%", this.drawX + 10, this.drawY - 10);
 };
 
 Jet.prototype.updateCoors = function() {
@@ -314,10 +320,15 @@ function Enemy() {
     this.rewardPoints = 5;
 }
 
-Enemy.prototype.draw = function() {
+Enemy.prototype.draw = function () {
     this.drawX -= this.speed;
     ctxEnemy.drawImage(imgSprite, this.srcX, this.srcY, this.width, this.height, this.drawX, this.drawY, this.width, this.height);
     this.checkEscaped();
+    
+    // Display health percentage text
+    ctxEnemy.fillStyle = "white";
+    ctxEnemy.font = "bold 12px Arial";
+    ctxEnemy.fillText("Health: " + this.health + "%", this.drawX + 10, this.drawY - 10);
 };
 
 Enemy.prototype.checkEscaped = function() {
