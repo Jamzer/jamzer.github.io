@@ -15,10 +15,12 @@ var gameWidth = canvasBg.width;
 var gameHeight = canvasBg.height;
 var mouseX = 0;
 var mouseY = 0;
+var gameTime = 0;
+var scoreThreshold = 100;
 var isPlaying = false;
 var requestAnimFrame = window.requestAnimationFrame || 
-var gameTime = 0;								window.webkitRequestAnimationFrame ||
-var scoreThreshold = 100;								window.mozRequestAnimationFrame ||
+								window.webkitRequestAnimationFrame ||
+								window.mozRequestAnimationFrame ||
 									window.msRequestAnimationFrame ||
 									window.oRequestAnimationFrame	||
 									function (callback) {
