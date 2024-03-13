@@ -15,7 +15,7 @@ var gameHeight = canvasBg.height;
 var mouseX = 0;
 var mouseY = 0;
 // Define a variable to store the maximum speed of the jet
-var maxJetSpeed = Math.max(jet1.speedX, jet1.speedY);
+var maxJetSpeed = 10;
 
 // Calculate the bullet speed to be higher than the maximum jet speed
 var bulletSpeed = maxJetSpeed + 2; // You can adjust the additional value as needed
