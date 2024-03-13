@@ -255,26 +255,38 @@ Bullet.prototype.fire = function(startX, startY) {
     this.drawY = startY;
 };
 
-Bullet.prototype.checkHitEnemy = function() {
+Bullet.prototype.checkHitEnemy = function () {
     for (var i = 0; i < enemies.length; i++) {
-        if (this.drawX >= enemies[i].drawX && this.drawX <= enemies[i].drawX + enemies[i].width && this.drawY >= enemies[i].drawY && this.drawY <= enemies[i].drawY + enemies[i].height) {
-            this.explosion.drawX = enemies[i].drawX - (this.explosion.width / 2);
+        if (
+            this.drawX + this.width >= enemies[i].drawX &&
+            this.drawX <= enemies[i].drawX + enemies[i].width &&
+            this.drawY + this.height >= enemies[i].drawY &&
+            this.drawY <= enemies[i].drawY + enemies[i].height
+        ) {
+            this.explosion.drawX = enemies[i].drawX - this.explosion.width / 2;
             this.explosion.drawY = enemies[i].drawY;
             this.explosion.hasHit = true;
             this.recycle();
-            enemies[i].health -= 20;
+            enemies[i].health -= 20; // Reduce enemy's health
             if (enemies[i].health <= 0) {
                 enemies[i].recycleEnemy();
                 jet1.updateScore(enemies[i].rewardPoints);
             }
+            return; // Exit the loop once a collision is detected
         }
     }
 
-    if (this.drawX >= jet1.drawX && this.drawX <= jet1.drawX + jet1.width && this.drawY >= jet1.drawY && this.drawY <= jet1.drawY + jet1.height) {
+    // Check for collision with player's jet
+    if (
+        this.drawX + this.width >= jet1.drawX &&
+        this.drawX <= jet1.drawX + jet1.width &&
+        this.drawY + this.height >= jet1.drawY &&
+        this.drawY <= jet1.drawY + jet1.height
+    ) {
         this.recycle();
-        jet1.health -= 20;
+        jet1.health -= 20; // Reduce player's health
         if (jet1.health <= 0) {
-            endGame();
+            endGame(); // Trigger game over if player's health reaches zero
         }
     }
 };
@@ -318,6 +330,7 @@ function Enemy() {
     this.drawX = Math.floor(Math.random() * 1000) + 900;
     this.drawY = Math.floor(Math.random() * 360);
     this.rewardPoints = 5;
+    this.health = 100;
 }
 
 Enemy.prototype.draw = function () {
