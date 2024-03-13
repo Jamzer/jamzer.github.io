@@ -18,14 +18,7 @@ var mouseX = 0;
 var mouseY = 0;
 var gameTime = 0;
 var scoreThreshold = 100;
-var requestAnimFrame = window.requestAnimationFrame || 
-								window.webkitRequestAnimationFrame ||
-								window.mozRequestAnimationFrame ||
-									window.msRequestAnimationFrame ||
-									window.oRequestAnimationFrame	||
-									function (callback) {
-									window.setTimeout(callback, 1000 / 60);
-									};
+var requestAnimFrame = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.msRequestAnimationFrame || window.oRequestAnimationFrame	|| function (callback) { window.setTimeout(callback, 1000 / 60); };
 var enemies = [];
 var spawnAmount = 7;
 
