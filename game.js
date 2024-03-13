@@ -17,8 +17,8 @@ var mouseX = 0;
 var mouseY = 0;
 var isPlaying = false;
 var requestAnimFrame = window.requestAnimationFrame || 
-									window.webkitRequestAnimationFrame ||
-									window.mozRequestAnimationFrame ||
+var gameTime = 0;								window.webkitRequestAnimationFrame ||
+var scoreThreshold = 1000;								window.mozRequestAnimationFrame ||
 									window.msRequestAnimationFrame ||
 									window.oRequestAnimationFrame	||
 									function (callback) {
@@ -116,13 +116,18 @@ function drawAllEnemies() {
 }
 
 function loop() {
-	if (isPlaying) {
-		jet1.draw();
-		drawAllEnemies();
-		requestAnimFrame(loop);
-		moveBg2();
-		moveBg();
-	}
+    if (isPlaying) {
+        jet1.draw();
+        drawAllEnemies();
+        moveBg2();
+        moveBg();
+        // Check for end condition
+        if (jet1.score >= scoreThreshold) {
+            endGame();
+            return;
+        }
+        requestAnimFrame(loop);
+    }
 }
 
 function startLoop() {
@@ -134,6 +139,13 @@ function startLoop() {
 function stopLoop() {
 	isPlaying = false;
 	
+}
+
+function endGame() {
+    stopLoop();
+    // Perform end game actions, such as displaying a message or resetting the game
+    console.log("Game Over! Score: " + jet1.score);
+    // You can add more actions here, such as displaying a game over message or resetting the game
 }
 
 function drawMenu() {
@@ -191,6 +203,8 @@ function Jet()  {
 		this.bullets[this.bullets.length] = new Bullet(this);
 	}
 	this.score = 0;
+	this.health = 100; // Initial health value
+
 }
 
 Jet.prototype.draw = function () {
@@ -283,19 +297,34 @@ Bullet.prototype.fire = function (startX, startY) {
 };
 
 Bullet.prototype.checkHitEnemy = function () {
-	for (var i = 0; i < enemies.length; i++) {
-		if	(this.drawX >= enemies[i].drawX &&
-			 this.drawX <= enemies[i].drawX + enemies[i].width &&
-			 this.drawY >= enemies[i].drawY &&
-			 this.drawY <= enemies[i].drawY + enemies[i].height) {
-				this.explosion.drawX = enemies[i].drawX - (this.explosion.width / 2);
-				this.explosion.drawY = enemies[i].drawY;
-				this.explosion.hasHit = true;
-				this.recycle();
-				enemies[i].recycleEnemy();
-				this.jet.updateScore(enemies[i].rewardPoints);
-		}
-	}
+    for (var i = 0; i < enemies.length; i++) {
+        if (this.drawX >= enemies[i].drawX &&
+            this.drawX <= enemies[i].drawX + enemies[i].width &&
+            this.drawY >= enemies[i].drawY &&
+            this.drawY <= enemies[i].drawY + enemies[i].height) {
+            this.explosion.drawX = enemies[i].drawX - (this.explosion.width / 2);
+            this.explosion.drawY = enemies[i].drawY;
+            this.explosion.hasHit = true;
+            this.recycle();
+            enemies[i].health -= 20; // Reduce enemy's health
+            if (enemies[i].health <= 0) {
+                enemies[i].recycleEnemy();
+                jet1.updateScore(enemies[i].rewardPoints);
+            }
+        }
+    }
+    
+    // Check for collision with player's jet
+    if (this.drawX >= jet1.drawX &&
+        this.drawX <= jet1.drawX + jet1.width &&
+        this.drawY >= jet1.drawY &&
+        this.drawY <= jet1.drawY + jet1.height) {
+        this.recycle();
+        jet1.health -= 20; // Reduce player's health
+        if (jet1.health <= 0) {
+            endGame(); // Trigger game over if player's health reaches zero
+        }
+    }
 };
 
 Bullet.prototype.recycle = function () {
