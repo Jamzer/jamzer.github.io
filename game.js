@@ -9,6 +9,7 @@ var ctxHUD = canvasHUD.getContext('2d');
 ctxHUD.fillStyle = "hsla(0, 0%, 0%, 0.5)";
 ctxHUD.font = "bold 20px Arial"
 console.log("Working");
+var isPlaying = false;
 var jet1 = new Jet();
 var btnPlay = new Button(185, 568, 155, 300);
 var gameWidth = canvasBg.width;
@@ -17,7 +18,6 @@ var mouseX = 0;
 var mouseY = 0;
 var gameTime = 0;
 var scoreThreshold = 100;
-var isPlaying = false;
 var requestAnimFrame = window.requestAnimationFrame || 
 								window.webkitRequestAnimationFrame ||
 								window.mozRequestAnimationFrame ||
