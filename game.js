@@ -14,6 +14,11 @@ var gameWidth = canvasBg.width;
 var gameHeight = canvasBg.height;
 var mouseX = 0;
 var mouseY = 0;
+// Define a variable to store the maximum speed of the jet
+var maxJetSpeed = Math.max(jet1.speedX, jet1.speedY);
+
+// Calculate the bullet speed to be higher than the maximum jet speed
+var bulletSpeed = maxJetSpeed + 2; // You can adjust the additional value as needed
 var gameTime = 0;
 var scoreThreshold = 100;
 var requestAnimFrame = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.msRequestAnimationFrame || window.oRequestAnimationFrame || function(callback) { window.setTimeout(callback, 1000 / 60); };
@@ -28,12 +33,12 @@ var bgDrawX = 0;
 var bgDrawX2 = 800;
 
 function moveBg() {
-    bgDrawX -= 6;
-    bgDrawX2 -= 6;
-    if (bgDrawX <= -800) {
-        bgDrawX = 800;
-    } else if (bgDrawX2 <= -800) {
-        bgDrawX2 = 800;
+    bgDrawX -= jet1.speedX / 2;
+    bgDrawX2 -= jet1.speedX / 2;
+    if (bgDrawX <= -gameWidth) {
+        bgDrawX = gameWidth;
+    } else if (bgDrawX2 <= -gameWidth) {
+        bgDrawX2 = gameWidth;
     }
     drawBg();
 }
@@ -42,12 +47,12 @@ var bg2DrawX = 0;
 var bg2DrawX2 = 800;
 
 function moveBg2() {
-    bg2DrawX -= 2;
-    bg2DrawX2 -= 2;
-    if (bg2DrawX <= -800) {
-        bg2DrawX = 800;
-    } else if (bg2DrawX2 <= -800) {
-        bg2DrawX2 = 800;
+    bg2DrawX -= jet1.speedX / 4;
+    bg2DrawX2 -= jet1.speedX / 4;
+    if (bg2DrawX <= -gameWidth) {
+        bg2DrawX = gameWidth;
+    } else if (bg2DrawX2 <= -gameWidth) {
+        bg2DrawX2 = gameWidth;
     }
     drawBg2();
 }
@@ -240,6 +245,7 @@ function Bullet(jet) {
     this.drawY = 0;
     this.width = 5;
     this.height = 5;
+    this.speed = bulletSpeed;
     this.explosion = new Explosion();
 }
 
