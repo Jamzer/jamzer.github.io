@@ -33,28 +33,28 @@ var bgDrawX = 0;
 var bgDrawX2 = 800;
 
 function moveBg() {
-    bgDrawX -= jet1.speedX / 2;
-    bgDrawX2 -= jet1.speedX / 2;
-    if (bgDrawX <= -gameWidth) {
-        bgDrawX = gameWidth;
-    } else if (bgDrawX2 <= -gameWidth) {
-        bgDrawX2 = gameWidth;
-    }
-    drawBg();
+	bgDrawX -= 6;
+	bgDrawX2 -= 6;
+	if (bgDrawX <= -800) { //change to 1600?
+		bgDrawX = 800;
+	} else if (bgDrawX2 <= -800) { //change to 1600?
+		bgDrawX2 = 800;
+	}
+	drawBg();
 }
 
 var bg2DrawX = 0;
 var bg2DrawX2 = 800;
 
 function moveBg2() {
-    bg2DrawX -= jet1.speedX / 4;
-    bg2DrawX2 -= jet1.speedX / 4;
-    if (bg2DrawX <= -gameWidth) {
-        bg2DrawX = gameWidth;
-    } else if (bg2DrawX2 <= -gameWidth) {
-        bg2DrawX2 = gameWidth;
-    }
-    drawBg2();
+	bg2DrawX -= 2;
+	bg2DrawX2 -= 2;
+	if (bg2DrawX <= -800) { //change to 1600?
+		bg2DrawX = 800;
+	} else if (bg2DrawX2 <= -800) { //change to 1600?
+		bg2DrawX2 = 800;
+	}
+	drawBg2();
 }
 
 function init() {
