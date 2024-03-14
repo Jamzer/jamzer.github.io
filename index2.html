@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game</title>
+</head>
+<body>
+    <header>This isufisgsaiufga  Working</header>
+    <!-- Replace the <section> with a <button> -->
+    <button id="startGameButton">Jet Game</button>
+    <footer>JS game above this</footer>
+
+    <!-- Keep the canvases as they are -->
+    <canvas id="canvasBg" width="800" height="500"></canvas>
+    <canvas id="canvasJet" width="800" height="500"></canvas>
+    <canvas id="canvasEnemy" width="800" height="500"></canvas>
+    <canvas id="canvasHUD" width="800" height="500"></canvas>
+
+    <script>
+        // Add an event listener to the button
+        document.getElementById("startGameButton").addEventListener("click", function() {
+            // Load the game.js file
+            var script = document.createElement("script");
+            script.src = "game.js";
+            document.body.appendChild(script);
+            // Hide the button once the game starts (optional)
+            this.style.display = "none";
+        });
+    </script>
+</body>
+</html>
