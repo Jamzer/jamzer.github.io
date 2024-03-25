@@ -26,7 +26,7 @@ var enemies = [];
 var spawnAmount = 7;
 
 var imgSprite = new Image();
-imgSprite.src = 'https://github.com/Jamzer/jamzer.github.io/blob/main/NewSprite-removebg-preview.png';
+imgSprite.src = 'https://jamzer.github.io/NewSprite-removebg-preview.png';
 imgSprite.addEventListener('load', init, false);
 
 var bgDrawX = 0;
